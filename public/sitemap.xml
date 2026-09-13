@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemap>
+  <website>
+    <name>AL Khair Graphics</name>
+    <description>Professional graphic design, printing and advertising website</description>
+
+    <page id="home" title="Home" url="/">
+      <section title="Header / Navigation"/>
+      <section title="Hero Section">
+        <item>Heading</item>
+        <item>Short Description</item>
+        <item>Get a Quote</item>
+        <item>View Our Work</item>
+      </section>
+      <section title="Trust / Quick Stats"/>
+      <section title="Featured Services"/>
+      <section title="Featured Portfolio"/>
+      <section title="Why Choose AL Khair Graphics"/>
+      <section title="Our Work Process"/>
+      <section title="Customer Reviews"/>
+      <section title="Call-to-Action"/>
+      <section title="Footer"/>
+    </page>
+
+    <page id="services" title="Services" url="/services">
+      <service>Graphic Designing</service>
+      <service>Flex &amp; Banner Printing</service>
+      <service>Billboard Advertising</service>
+      <service>Poster &amp; Flyer Design</service>
+      <service>Logo &amp; Branding</service>
+      <service>Business Cards</service>
+      <service>Wallpaper Designs</service>
+      <service>Social Media Designs</service>
+      <service>Sign Board Design</service>
+      <service>Printing Services</service>
+      <service>Custom Design Solutions</service>
+    </page>
+
+    <page id="our-work" title="Our Work" url="/our-work">
+      <category>All Projects</category>
+      <category>Graphic Design</category>
+      <category>Flex &amp; Banners</category>
+      <category>Billboards</category>
+      <category>Wallpapers</category>
+      <category>Branding</category>
+      <category>Posters &amp; Flyers</category>
+      <category>Sign Boards</category>
+    </page>
+
+    <page id="gallery" title="Gallery" url="/gallery">
+      <category>Banner Designs</category>
+      <category>Wallpaper Designs</category>
+      <category>Printing Work</category>
+      <category>Advertising Work</category>
+      <category>Design Showcase</category>
+    </page>
+
+    <page id="about" title="About Us" url="/about">
+      <section title="About AL Khair Graphics"/>
+      <section title="Our Story"/>
+      <section title="Our Mission"/>
+      <section title="Our Vision"/>
+      <section title="Why Clients Choose Us"/>
+      <section title="Quality &amp; Professionalism"/>
+    </page>
+
+    <page id="reviews" title="Reviews" url="/reviews">
+      <section title="Customer Reviews"/>
+      <section title="Client Feedback"/>
+      <section title="Google Reviews CTA"/>
+    </page>
+
+    <page id="quote" title="Get a Quote" url="/get-a-quote">
+      <field>Name</field>
+      <field>Phone</field>
+      <field>Service</field>
+      <field>Project Details</field>
+      <field>Upload Design / Reference</field>
+      <field>Submit Request</field>
+    </page>
+
+    <page id="contact" title="Contact" url="/contact">
+      <section title="Business Information"/>
+      <section title="Google Maps"/>
+      <section title="Call"/>
+      <section title="WhatsApp"/>
+      <section title="Contact Form"/>
+    </page>
+
+    <page id="admin" title="Admin Panel" url="/admin">
+      <section title="Dashboard"/>
+      <section title="Services Management"/>
+      <section title="Portfolio Management"/>
+      <section title="Gallery Management"/>
+      <section title="Reviews Management"/>
+      <section title="Quote Requests"/>
+      <section title="Contact Messages"/>
+      <section title="Business Settings"/>
+    </page>
+
+    <design>
+      <style>Modern, Premium, Creative, Local Business, Portfolio-focused</style>
+      <animation>Subtle and performance-friendly</animation>
+      <responsive>Mobile, Tablet and Desktop</responsive>
+    </design>
+  </website>
+</sitemap>

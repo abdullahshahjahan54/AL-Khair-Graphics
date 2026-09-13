@@ -9,50 +9,65 @@ interface PortfolioGalleryProps {
 }
 
 const CATEGORIES = [
-  'All',
-  'Banners',
-  'Flex Printing',
-  'Billboards',
+  'All Projects',
   'Graphic Design',
-  'Wallpaper Designs',
+  'Flex & Banners',
+  'Billboards',
+  'Wallpapers',
   'Branding',
-  'Posters',
-  'Advertising'
+  'Posters & Flyers',
+  'Sign Boards'
 ];
 
 export const PortfolioGallery: React.FC<PortfolioGalleryProps> = ({ 
   portfolio, 
   onOpenLightbox 
 }) => {
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState('All Projects');
 
-  // Helper to match category
+  // Helper to match category according to sitemap
   const matchesCategory = (itemCategory: string, selectedCat: string) => {
-    if (selectedCat === 'All') return true;
+    if (selectedCat === 'All Projects' || selectedCat === 'All') return true;
     const catLow = itemCategory.toLowerCase();
     const selLow = selectedCat.toLowerCase();
-    if (selLow === 'wallpaper designs' || selLow === 'wallpapers') {
-      return catLow.includes('wallpaper');
+    
+    if (selLow === 'flex & banners' || selLow === 'banners') {
+      return catLow.includes('flex') || catLow.includes('banner') || catLow.includes('panaflex');
     }
-    if (selLow === 'banners') {
-      return catLow === 'banners' || catLow.includes('banner');
+    if (selLow === 'wallpapers' || selLow === 'wallpaper designs') {
+      return catLow.includes('wallpaper') || catLow.includes('mural');
     }
-    return catLow === selLow;
+    if (selLow === 'billboards') {
+      return catLow.includes('billboard') || catLow.includes('outdoor');
+    }
+    if (selLow === 'branding') {
+      return catLow.includes('brand') || catLow.includes('logo') || catLow.includes('identity');
+    }
+    if (selLow === 'posters & flyers' || selLow === 'posters') {
+      return catLow.includes('poster') || catLow.includes('flyer');
+    }
+    if (selLow === 'sign boards') {
+      return catLow.includes('sign') || catLow.includes('acrylic') || catLow.includes('board');
+    }
+    if (selLow === 'graphic design') {
+      return catLow.includes('graphic') || catLow.includes('design') || catLow.includes('vector') || catLow.includes('social');
+    }
+    return catLow === selLow || catLow.includes(selLow);
   };
 
   // Filter items based on active category
   const filteredItems = useMemo(() => {
     const published = portfolio.filter(p => p.published);
-    if (activeCategory === 'All') return published;
+    if (activeCategory === 'All Projects' || activeCategory === 'All') return published;
     return published.filter(p => matchesCategory(p.category, activeCategory));
   }, [portfolio, activeCategory]);
 
   // Counts for each category
   const categoryCounts = useMemo(() => {
     const published = portfolio.filter(p => p.published);
-    const counts: Record<string, number> = { All: published.length };
+    const counts: Record<string, number> = { 'All Projects': published.length };
     CATEGORIES.forEach(cat => {
-      if (cat !== 'All') {
+      if (cat !== 'All Projects') {
         counts[cat] = published.filter(p => matchesCategory(p.category, cat)).length;
       }
     });

@@ -7,7 +7,8 @@ import {
   ArrowUpRight, 
   Clock, 
   Lock, 
-  Layers
+  Layers,
+  Network
 } from 'lucide-react';
 import { BusinessSettings } from '../types';
 
@@ -15,9 +16,10 @@ interface NavbarProps {
   settings: BusinessSettings;
   onOpenQuote: (prefillService?: string) => void;
   onOpenAdmin: () => void;
+  onOpenSitemap?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ settings, onOpenQuote, onOpenAdmin }) => {
+export const Navbar: React.FC<NavbarProps> = ({ settings, onOpenQuote, onOpenAdmin, onOpenSitemap }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -116,6 +118,18 @@ export const Navbar: React.FC<NavbarProps> = ({ settings, onOpenQuote, onOpenAdm
               <span>Get a Quote</span>
             </button>
 
+            {/* Site Map Architecture Button */}
+            {onOpenSitemap && (
+              <button
+                id="nav-sitemap-btn"
+                onClick={onOpenSitemap}
+                title="View Website Site Map (sitemap.xml)"
+                className="w-9 h-9 rounded-full bg-neutral-900 hover:bg-neutral-800 text-neutral-400 hover:text-amber-400 flex items-center justify-center border border-neutral-800 transition-colors cursor-pointer"
+              >
+                <Network className="w-4 h-4" />
+              </button>
+            )}
+
             {/* Admin Access Portal Icon Button */}
             <button
               id="nav-admin-portal-btn"
@@ -129,6 +143,16 @@ export const Navbar: React.FC<NavbarProps> = ({ settings, onOpenQuote, onOpenAdm
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 sm:hidden">
+            {onOpenSitemap && (
+              <button
+                id="nav-mobile-sitemap-btn"
+                onClick={onOpenSitemap}
+                title="Site Map"
+                className="w-9 h-9 rounded-full bg-neutral-900 text-neutral-400 hover:text-amber-400 flex items-center justify-center border border-neutral-800"
+              >
+                <Network className="w-4 h-4" />
+              </button>
+            )}
             <button
               id="nav-mobile-admin-btn"
               onClick={onOpenAdmin}

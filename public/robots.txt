@@ -1,0 +1,7 @@
+# Robots.txt for AL Khair Graphics
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/admin/
+
+Sitemap: /sitemap.xml

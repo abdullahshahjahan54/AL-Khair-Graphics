@@ -20,6 +20,7 @@ import { Footer } from './components/Footer';
 import { FloatingContact } from './components/FloatingContact';
 import { QuoteFormModal } from './components/QuoteFormModal';
 import { LightboxModal, LightboxItem } from './components/LightboxModal';
+import { SitemapModal } from './components/SitemapModal';
 import { AdminLoginModal } from './components/admin/AdminLoginModal';
 import { AdminDashboard } from './components/admin/AdminDashboard';
 import { api, getStoredUser } from './api';
@@ -66,6 +67,9 @@ export default function App() {
   const [lightboxItems, setLightboxItems] = useState<LightboxItem[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
+  // Sitemap Modal
+  const [sitemapOpen, setSitemapOpen] = useState(false);
+
   // Load initial public content
   const loadAppData = async () => {
     try {
@@ -92,7 +96,7 @@ export default function App() {
   useEffect(() => {
     loadAppData();
 
-    // Check if URL has admin route
+    // Check if URL has admin route or sitemap
     if (window.location.pathname.includes('/admin')) {
       const stored = getStoredUser();
       if (stored) {
@@ -100,6 +104,8 @@ export default function App() {
       } else {
         setAdminLoginOpen(true);
       }
+    } else if (window.location.pathname.includes('/sitemap') || window.location.hash.includes('sitemap')) {
+      setSitemapOpen(true);
     }
   }, []);
 
@@ -113,6 +119,24 @@ export default function App() {
       setAdminDashboardOpen(true);
     } else {
       setAdminLoginOpen(true);
+    }
+  };
+
+  const handleNavigateFromSitemap = (url: string, sectionHash?: string) => {
+    if (url === '/admin') {
+      handleOpenAdmin();
+      return;
+    }
+    if (url === '/get-a-quote') {
+      handleOpenQuote();
+      return;
+    }
+    const targetSelector = sectionHash || (url === '/' ? '#hero' : (url.startsWith('/#') ? url.replace('/', '') : '#' + url.replace('/', '')));
+    const el = document.querySelector(targetSelector);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -163,6 +187,7 @@ export default function App() {
         settings={settings}
         onOpenQuote={handleOpenQuote}
         onOpenAdmin={handleOpenAdmin}
+        onOpenSitemap={() => setSitemapOpen(true)}
       />
 
       {/* Hero Section with 3D perspective creative work & 24/7 indicator */}
@@ -246,6 +271,7 @@ export default function App() {
         settings={settings}
         onOpenQuote={() => handleOpenQuote()}
         onOpenAdmin={handleOpenAdmin}
+        onOpenSitemap={() => setSitemapOpen(true)}
       />
 
       {/* Floating 24/7 WhatsApp & Direct Call Widget */}
@@ -256,6 +282,13 @@ export default function App() {
 
       {/* Real-time Order Activity Ticker Toast */}
       <RecentOrderNotification />
+
+      {/* Interactive Website Site Map Modal */}
+      <SitemapModal 
+        isOpen={sitemapOpen}
+        onClose={() => setSitemapOpen(false)}
+        onNavigateTo={handleNavigateFromSitemap}
+      />
 
       {/* Quote Request Modal */}
       <QuoteFormModal 

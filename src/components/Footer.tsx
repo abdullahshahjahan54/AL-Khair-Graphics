@@ -9,7 +9,9 @@ import {
   Lock,
   Heart,
   Facebook,
-  Instagram
+  Instagram,
+  Network,
+  FileCode
 } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { BusinessSettings } from '../types';
@@ -18,12 +20,14 @@ interface FooterProps {
   settings: BusinessSettings;
   onOpenQuote: () => void;
   onOpenAdmin: () => void;
+  onOpenSitemap?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ 
   settings, 
   onOpenQuote, 
-  onOpenAdmin 
+  onOpenAdmin,
+  onOpenSitemap 
 }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -154,6 +158,17 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <a href="#contact" className="hover:text-amber-400 transition-colors">Contact</a>
               </li>
+              {onOpenSitemap && (
+                <li>
+                  <button 
+                    onClick={onOpenSitemap}
+                    className="hover:text-amber-400 transition-colors flex items-center gap-1.5 text-left cursor-pointer text-amber-400/90 font-medium"
+                  >
+                    <Network className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Site Map</span>
+                  </button>
+                </li>
+              )}
               <li>
                 <button 
                   onClick={onOpenQuote}
@@ -238,7 +253,27 @@ export const Footer: React.FC<FooterProps> = ({
             &copy; {new Date().getFullYear()} {settings.name}. All rights reserved. Registered Graphic Design &amp; Printing Agency in D.I. Khan, Pakistan.
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            {onOpenSitemap && (
+              <button
+                onClick={onOpenSitemap}
+                className="flex items-center gap-1.5 text-neutral-400 hover:text-amber-400 transition-colors cursor-pointer"
+              >
+                <Network className="w-3.5 h-3.5 text-amber-400" />
+                <span>Site Map</span>
+              </button>
+            )}
+
+            <a
+              href="/sitemap.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-neutral-400 hover:text-amber-400 transition-colors"
+            >
+              <FileCode className="w-3.5 h-3.5 text-amber-400" />
+              <span>sitemap.xml</span>
+            </a>
+
             <button
               onClick={onOpenAdmin}
               className="flex items-center gap-1.5 text-neutral-400 hover:text-amber-400 transition-colors cursor-pointer"

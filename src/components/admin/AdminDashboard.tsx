@@ -26,7 +26,10 @@ import {
   Upload, 
   AlertCircle,
   CheckCircle2,
-  RefreshCw
+  RefreshCw,
+  Network,
+  Globe,
+  FileCode
 } from 'lucide-react';
 import { 
   BusinessSettings, 
@@ -1100,6 +1103,108 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                     <Save className="w-4 h-4" />
                     <span>Save Changes</span>
                   </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Google Search Console & SEO Section */}
+            <div className="p-8 rounded-3xl bg-neutral-900 border border-neutral-800 space-y-5">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-xl font-bold font-display text-white flex items-center gap-2">
+                    <Globe className="w-5 h-5 text-amber-400" />
+                    <span>SEO &amp; Google Search Console</span>
+                  </h3>
+                  <p className="text-xs text-neutral-400 mt-1">
+                    Search engine indexing, verification file, and XML sitemap configuration
+                  </p>
+                </div>
+                <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-semibold flex items-center gap-1.5">
+                  <Check className="w-3.5 h-3.5" />
+                  <span>Configured &amp; Active</span>
+                </span>
+              </div>
+
+              <div className="space-y-3 text-xs">
+                {/* Search Console File */}
+                <div className="p-4 rounded-2xl bg-neutral-950 border border-neutral-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-white">Google Verification File</span>
+                      <span className="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800 text-[10px] font-mono">
+                        Active
+                      </span>
+                    </div>
+                    <p className="text-neutral-400 font-mono text-[11px] mt-0.5">
+                      /googlec7fa3181f2ab08ba.html
+                    </p>
+                    <p className="text-neutral-500 text-[11px] mt-1">
+                      Verification Token: <span className="text-neutral-300 font-mono">googlec7fa3181f2ab08ba</span>
+                    </p>
+                  </div>
+                  <a
+                    href="/googlec7fa3181f2ab08ba.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-1.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-amber-400 hover:text-amber-300 border border-neutral-800 font-medium text-xs flex items-center gap-1.5 transition-colors"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>View File</span>
+                  </a>
+                </div>
+
+                {/* XML Sitemap */}
+                <div className="p-4 rounded-2xl bg-neutral-950 border border-neutral-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-white">XML Sitemap</span>
+                      <span className="px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800 text-[10px] font-mono">
+                        9 Routes
+                      </span>
+                    </div>
+                    <p className="text-neutral-400 font-mono text-[11px] mt-0.5">
+                      /sitemap.xml
+                    </p>
+                    <p className="text-neutral-500 text-[11px] mt-1">
+                      Includes Home, Graphic Design, Flex &amp; Banner Printing, Billboards, Wallpapers, Contact, and Quote routes.
+                    </p>
+                  </div>
+                  <a
+                    href="/sitemap.xml"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-1.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-amber-400 hover:text-amber-300 border border-neutral-800 font-medium text-xs flex items-center gap-1.5 transition-colors"
+                  >
+                    <FileCode className="w-3.5 h-3.5" />
+                    <span>Open XML</span>
+                  </a>
+                </div>
+
+                {/* Robots.txt */}
+                <div className="p-4 rounded-2xl bg-neutral-950 border border-neutral-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-white">Crawler Directives (robots.txt)</span>
+                      <span className="px-2 py-0.5 rounded bg-neutral-800 text-neutral-300 border border-neutral-700 text-[10px] font-mono">
+                        Public
+                      </span>
+                    </div>
+                    <p className="text-neutral-400 font-mono text-[11px] mt-0.5">
+                      /robots.txt
+                    </p>
+                    <p className="text-neutral-500 text-[11px] mt-1">
+                      Directs Googlebot and search crawlers to indexing routes and sitemap location.
+                    </p>
+                  </div>
+                  <a
+                    href="/robots.txt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-1.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 text-amber-400 hover:text-amber-300 border border-neutral-800 font-medium text-xs flex items-center gap-1.5 transition-colors"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>Open robots.txt</span>
+                  </a>
                 </div>
               </div>
             </div>

@@ -62,6 +62,32 @@ async function startServer() {
     res.json({ status: 'ok', service: 'AL Khair Graphics Backend' });
   });
 
+  // XML Sitemap endpoint
+  app.get('/sitemap.xml', (req, res) => {
+    const sitemapPath = path.resolve(process.cwd(), 'public', 'sitemap.xml');
+    if (fs.existsSync(sitemapPath)) {
+      res.header('Content-Type', 'application/xml');
+      return res.sendFile(sitemapPath);
+    }
+    res.status(404).send('Sitemap not found');
+  });
+
+  // Robots.txt endpoint
+  app.get('/robots.txt', (req, res) => {
+    const robotsPath = path.resolve(process.cwd(), 'public', 'robots.txt');
+    if (fs.existsSync(robotsPath)) {
+      res.header('Content-Type', 'text/plain');
+      return res.sendFile(robotsPath);
+    }
+    res.status(404).send('User-agent: *\nAllow: /\nSitemap: /sitemap.xml');
+  });
+
+  // Google Search Console verification endpoint
+  app.get('/googlec7fa3181f2ab08ba.html', (req, res) => {
+    res.header('Content-Type', 'text/html; charset=utf-8');
+    res.send('google-site-verification: googlec7fa3181f2ab08ba.html');
+  });
+
   // Business Settings
   app.get('/api/settings', (req, res) => {
     res.json(db.getSettings());
