@@ -1,0 +1,6 @@
+{
+  "name": "AL Khair Graphics",
+  "description": "AL Khair Graphics provides professional graphic design, banner, flex, billboard, wallpaper, printing and advertising services in Dera Ismail Khan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
